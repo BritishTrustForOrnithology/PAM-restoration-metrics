@@ -1,0 +1,23 @@
+# PAM restoration metrics
+
+Turns passive acoustic monitoring (PAM) data into activity, diversity,
+phenology, and occupancy metrics for tracking habitat restoration.
+
+## What you need
+
+- **`data/classifier_output.csv`** — raw classifier output,
+  with columns `file`, `species`, `score`. File names in thise example start with
+  the site name, then an underscore, then a date_time
+  (e.g. `SiteA_20250615_063000.wav`).
+- **`data/verification_file.csv`** — a sample of detections an expert has
+  manually checked, with columns `file`, `species`, `identity` (TRUE/FALSE).
+
+## What each script gives you
+
+| Script | Output |
+|---|---|
+| `verify_presence.R` | Confirms which species were genuinely detected at each site |
+| `daily_activity_processing.R` | Daily detection counts per site/species |
+| `species_specific_thresholds.R` | A confidence threshold per species, from validated data |
+| `phenology.R` | Smoothed activity curves and a phenology heatmap |
+| `metric_calculation.R` | Top-5-day activity, richness, Simpson's diversity, species lists, occupancy model |
