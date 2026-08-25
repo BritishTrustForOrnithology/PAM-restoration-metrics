@@ -1,0 +1,5 @@
+site,forest_type,age,management,lon,lat
+SiteA,deciduous,old,restored,25.05,45.65
+SiteB,coniferous,middle,restored,25.12,45.71
+SiteC,mixed,young,control,24.98,45.59
+SiteD,deciduous,middle,restored,25.2,45.68
