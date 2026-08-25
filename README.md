@@ -16,7 +16,7 @@ phenology, and occupancy metrics for tracking habitat restoration.
 
 | Script | Output |
 |---|---|
-| `verify_presence.R` | Confirms which species were genuinely detected at each site |
+| `verify_presence.R` | Selects detections of species manually verified as present by an expert |
 | `daily_activity_processing.R` | Daily detection counts per site/species |
 | `species_specific_thresholds.R` | A confidence threshold per species, from validated data |
 | `phenology.R` | Smoothed activity curves and a phenology heatmap |
