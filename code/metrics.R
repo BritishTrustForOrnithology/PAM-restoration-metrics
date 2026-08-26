@@ -49,6 +49,7 @@ site_metadata <- read_csv("data/site_metadata.csv")
 confirmed <- get_confirmed_detections(raw, ver)
 
 # Project-wide species list ----
+
 study_list <- confirmed %>%
   group_by(species) %>%
   summarise(
@@ -60,22 +61,26 @@ study_list <- confirmed %>%
   arrange(species)
 
 # Per-site species list ----
+
 site_list <- confirmed %>%
   count(site, species, name = "detections") %>%
   arrange(desc(detections))
 
 # Richness per site ----
+
 # NOTE: Ensure survey effort (e.g., number of days) is roughly equal across 
 # sites. If highly unequal, consider rarefied richness instead.
 richness_df <- confirmed %>%
   group_by(site) %>%
   summarise(richness = n_distinct(species), .groups = "drop")
 
+# Mean activity of the top five days of greatest activity ----
+
 # Calculate daily activity using a standard 0.5 threshold
 # (Replace with species-specific thresholds if preferred)
 daily_activity <- calculate_daily_activity(raw, confirmed, tz = "UTC", threshold = 0.5)
 
-# Mean activity of the top five days of greatest activity ----
+# Average over top 5 days
 top5_activity <- daily_activity %>%
   group_by(site, species) %>%
   slice_max(activity, n = 5, with_ties = FALSE) %>%
